@@ -30,7 +30,9 @@ const RoutesWithLayout: FunctionComponent<Props> = ({
     dashboard,
     title,
 }) => {
-    const childrenAsArray = React.Children.toArray(children);
+    const childrenAsArray = React.Children.toArray(children).filter(
+        child => (child as React.ReactElement<any>).props.list
+    );
     const firstChild: React.ReactElement<any> | null =
         childrenAsArray.length > 0
             ? (childrenAsArray[0] as React.ReactElement<any>)
